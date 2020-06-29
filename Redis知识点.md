@@ -112,27 +112,58 @@ redis默认有16个数据库（0~15），以及数据存储时存在正反向索
 | setrange key offset value                             | 从offset开始覆盖value的值                                    |
 | strlen key                                            | 返回key的value字符串长度                                     |
 
-应用场景：
-
-
-
 **hash有关：**
 
-| 命令 | 说明 |
-| ---- | ---- |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
+| 命令                                    | 说明                                                |
+| --------------------------------------- | --------------------------------------------------- |
+| hdel key field [field...]               | 删除key中的一个或多个指定域；不存在，则忽略         |
+| hexists key field                       | 判断key中是否存在给的field；有返回1，否则返回0      |
+| hget key field                          | 获取key中给定域field的值                            |
+| hgetall key                             | 获取key中所有的域或值                               |
+| hincrby key field increment             | 为key中的filed域增量increment，可以是负数           |
+| hincrbyfloat key field increment        | 为key中的filed域浮点值增量increment，可以是负数     |
+| hkeys key                               | 返回key中所有域                                     |
+| hlen key                                | 返回key中域的数量                                   |
+| hmget key field [field...]              | 返回key中一个或多个指定域的值                       |
+| hmset key field value [field value ...] | 同时设置一个或多个域值对到key中。已存在的域会被覆盖 |
+| hset key field value                    | 设置key中一个field域的值                            |
+| hestnx key field value                  | 新增key中field域的值，当field域存在时，则失败       |
+| hvals key                               | 返回key中所有域的值（只是返回值）                   |
+
+**list有关：**
+
+| 命令                                  | 说明                                                         |
+| ------------------------------------- | ------------------------------------------------------------ |
+| blpop key [key...] timeout            | 阻塞式弹出头数据；当没有数据时， 命令阻塞，直到等待超时或发现可弹出元素为止。 |
+| brpop key [key...] timeout            | 阻塞式弹出尾数据；当没有数据时， 命令阻塞，直到等待超时或发现可弹出元素为止。 |
+| lindex key index                      | 返回key中下标为index的数据                                   |
+| linsert key before\|after pivot value | 将value插入到key中，位于pivot之前或之后                      |
+| llen key                              | 返回key的value长度                                           |
+| lpop key                              | 移除并返回key的value头元素                                   |
+| lpush key value [value...]            | 将一个或多个value插入到key的表头中                           |
+| lpushx key value                      | 当key存在时，将value插入到key的表头中                        |
+| lrange key start stop                 | 返回指定key的区间内元素                                      |
+| lren key count value                  | 移除key中value相等的元素；当count大于0，从表头开始搜索；当count<0，从表尾开始搜索；等于0，表示移除所有。 |
+| lset key index value                  | 将value插入到key的指定下标index位置                          |
+| ltrim key start stop                  | 指定范围内的元素保留，不在区间内的删除掉                     |
+| rpop key                              | 移除并返回key的value尾元素                                   |
+| rpush key value [value...]            | 将一个或多个value插入到key的尾部                             |
+| rpushx key value                      | 当key存在时，将value插入到key的表尾中                        |
+
+**set有关：**
+
+略（暂时不写了）
+
+**sortedset有关：**
+
+略（暂时不写了）
+
+## 四、常见的应用场景
 
 
 
-## 四、redis集群
+
+## 五、redis集群
 
 1、单机、单节点、单实例存在的问题：单点故障、容量有限、压力
 
